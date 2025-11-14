@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<style>
+    body {
+        background: #f8f9fa;
+    }
+    .card {
+        border: none;
+        border-radius: 20px;
+    }
+    .card-header {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+    .form-label {
+        font-weight: 600;
+    }
+    input, textarea, select {
+        border-radius: 10px !important;
+    }
+    .btn-primary {
+        background: linear-gradient(135deg, #4e73df, #224abe);
+        border: none;
+        transition: 0.3s ease;
+        border-radius: 12px;
+    }
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #3b5fd9, #1939a9);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    .card-shadow-sm {
+        box-shadow: 0 4px 25px rgba(0,0,0,0.1);
+    }
+    .needs-validation input:focus, 
+    .needs-validation textarea:focus, 
+    .needs-validation select:focus {
+        border-color: #4e73df;
+        box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+    }
+    .d-grid button {
+        font-weight: bold;
+        padding: 12px;
+    }
+</style>
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card card-shadow-sm">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0">My Profile</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        
+                        <!-- Name Field -->
+                        <div class="mb-3">
+                            <label for="beneficiary_name" class="form-label">Name</label>
+                            {{ form.beneficiary_name }}
+                        </div>
+                        
+                        <!-- Email Field -->
+                        <div class="mb-3">
+                            <label for="beneficiary_email" class="form-label">Email</label>
+                            {{ form.beneficiary_email }}
+                        </div>
+
+                        <!-- Phone Field -->
+                        <div class="mb-3">
+                            <label for="beneficiary_phone" class="form-label">Phone Number</label>
+                            {{ form.beneficiary_phone }}
+                        </div>
+
+                        <!-- Address Field -->
+                        <div class="mb-3">
+                            <label for="beneficiary_address" class="form-label">Address</label>
+                            {{ form.beneficiary_address }}
+                        </div>
+
+                        <!-- State Field -->
+                        <div class="mb-3">
+                            <label for="beneficiary_state" class="form-label">State</label>
+                            {{ form.beneficiary_state }}
+                        </div>
+
+                        <!-- Pincode Field -->
+                        <div class="mb-3">
+                            <label for="beneficiary_pincode" class="form-label">Pincode</label>
+                            {{ form.beneficiary_pincode }}
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">Update Profile</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="card shadow-lg p-4 text-center">
+        <h2 class="mb-4">Are you sure you want to logout?</h2>
+        <form method="post" action="{% url 'Users:fps_logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, Logout</button>
+            <a href="{% url 'Users:fps_dashboard' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

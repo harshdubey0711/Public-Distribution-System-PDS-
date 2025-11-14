@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="container-fluid bg-light py-4">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        <!-- Total Fair Price Shops -->
+        <div class="col">
+            <div class="card h-100 shadow-sm p-3">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">Total Fair Price Shops</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-shop me-2"></i>Under Panchayat: <strong>9,717</strong></li>
+                        <li><i class="bi bi-people me-2"></i>Co-op. Societies: <strong>82,624</strong></li>
+                        <li><i class="bi bi-people-fill me-2"></i>Selfhelp Group: <strong>26,351</strong></li>
+                        <li><i class="bi bi-person-badge me-2"></i>Individuals: <strong>2,96,567</strong></li>
+                        <li><i class="bi bi-building me-2"></i>Other FPS: <strong>90,643</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- New FPS Licenses -->
+        <div class="col">
+            <div class="card h-100 shadow-sm p-3 bg-success text-white">
+                <div class="card-body">
+                    <h5 class="fw-bold">New FPS Licenses Issued</h5>
+                    <p><i class="bi bi-file-earmark-plus-fill me-2"></i>AAY RCs Tagged: <strong>11</strong></p>
+                    <p><i class="bi bi-file-earmark-plus-fill me-2"></i>PHH RCs Tagged: <strong>17,09,596</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FPS Licenses Cancelled -->
+        <div class="col">
+            <div class="card h-100 shadow-sm p-3 bg-danger text-white">
+                <div class="card-body">
+                    <h5 class="fw-bold">FPS Licenses Cancelled/Suspended</h5>
+                    <p><i class="bi bi-file-earmark-x-fill me-2"></i>AAY RCs Involved: <strong>664</strong></p>
+                    <p><i class="bi bi-file-earmark-x-fill me-2"></i>PHH RCs Involved: <strong>6,550</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FPS Licenses Restored -->
+        <div class="col">
+            <div class="card h-100 shadow-sm p-3 bg-info text-white">
+                <div class="card-body">
+                    <h5 class="fw-bold">FPS Licenses Restored</h5>
+                    <p><i class="bi bi-file-earmark-check-fill me-2"></i>AAY RCs Tagged: <strong>603</strong></p>
+                    <p><i class="bi bi-file-earmark-check-fill me-2"></i>PHH RCs Tagged: <strong>5,271</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- GIS Mapped FPSs -->
+        <div class="col">
+            <div class="card h-100 shadow-sm p-3">
+                <div class="card-body">
+                    <h5 class="fw-bold"><i class="bi bi-geo-alt-fill me-2 text-success"></i>GIS Mapped FPSs</h5>
+                    <p class="fs-4 fw-bold text-success">2,26,901</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ePOS Supplied -->
+        <div class="col">
+            <div class="card h-100 shadow-sm p-3">
+                <div class="card-body">
+                    <h5 class="fw-bold"><i class="bi bi-printer-fill me-2 text-primary"></i>Count of ePOS Supplied</h5>
+                    <p class="fs-4 fw-bold text-primary">4,88,832</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active ePOS -->
+        <div class="col">
+            <div class="card h-100 shadow-sm p-3 bg-warning">
+                <div class="card-body">
+                    <h5 class="fw-bold"><i class="bi bi-check-circle-fill me-2 text-dark"></i>Active ePOS as on 16-Apr-2025</h5>
+                    <p class="fs-4 fw-bold text-dark">2,75,082</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

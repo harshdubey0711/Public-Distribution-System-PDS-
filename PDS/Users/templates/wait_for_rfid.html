@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <script>
+        let timeLeft = 120;  // 2 minutes countdown
+        let countdownTimer;
+        let rfidBuffer = ""; // To store RFID characters
+        let rfidScanned = false; // Prevent multiple scans
+
+        function getCSRFToken() {
+            let csrfToken = null;
+            let cookies = document.cookie.split(';');
+            for (let cookie of cookies) {
+                cookie = cookie.trim();
+                if (cookie.startsWith("csrftoken=")) {
+                    csrfToken = cookie.split('=')[1];
+                }
+            }
+            return csrfToken;
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById("countdown").innerText = 
+                `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+
+        function checkRFID() {
+    fetch("{% url 'Users:check_rfid' %}", {
+        headers: { "X-Requested-With": "XMLHttpRequest" } // Helps Django detect AJAX requests
+    })
+    .then(response => {
+        console.log("Response Type:", response.headers.get("content-type")); // Debugging
+        return response.text();
+    })
+    .then(data => {
+        console.log("Server Response:", data);  
+        if (data.trim() === "rfid_scanned") {  
+            clearInterval(countdownTimer);
+            window.location.href = "{% url 'Users:give_ration' %}";
+        }
+    })
+    .catch(error => console.error("Error checking RFID:", error));
+}
+
+        function startCountdown() {
+            updateTimerDisplay();
+            countdownTimer = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                if (timeLeft <= 0) {
+                    clearInterval(countdownTimer);
+                    document.getElementById("timeout-message").innerText = 
+                        "Time expired! Redirecting to home...";
+                    setTimeout(() => window.location.href = "/", 2000);
+                }
+            }, 1000);
+            setInterval(checkRFID, 3000);
+        }
+
+        function handleRfidScan(event) {
+            if (rfidScanned) return; // Stop further scanning
+
+            if (event.key === "Enter") {
+                event.preventDefault();
+                let scannedRFID = rfidBuffer.trim();
+                rfidBuffer = "";
+                console.log("RFID Scanned:", scannedRFID);
+
+                let formData = new FormData();
+                formData.append("rfid_tag", scannedRFID);
+
+                fetch("{% url 'Users:rfid-ration' %}", {
+                    method: 'POST',
+                    headers: {
+                        "X-CSRFToken": getCSRFToken()
+                    },
+                    body: formData
+                })
+                .then(response => response.text())  // Expecting plain text
+                .then(data => {
+                    console.log("Server Response:", data);
+                    alert("RFID Scanned: " + data);  // Show the scanned tag
+                    rfidScanned = true;
+                    clearInterval(countdownTimer);
+                    window.location.href = "{% url 'Users:give_ration' %}";  // Redirect
+                })
+                .catch(error => {
+                    console.error("Error scanning RFID:", error);
+                    alert('Error scanning RFID: ' + error);
+                });
+            } else {
+                rfidBuffer += event.key;
+            }
+        }
+
+        document.addEventListener("keydown", handleRfidScan);
+        window.onload = startCountdown;
+    </script>
+
+    <div class="container text-center mt-5">
+        <h1>Scan Your RFID Tag</h1>
+        <p id="rfid-message">Please tap your RFID tag to proceed.</p>
+
+        <p>You have <span id="countdown">2:00</span> minutes remaining.</p>
+        <p id="timeout-message" style="color: red;"></p>
+        <p>If you have any issues scanning, please contact support.</p>
+    </div>
+{% endblock %}

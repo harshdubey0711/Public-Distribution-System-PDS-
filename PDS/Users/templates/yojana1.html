@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PM-KMY | Government of India</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: #0b3d91;
+      color: white;
+      padding: 1rem 2rem;
+    }
+
+    .gov-banner {
+      display: flex;
+      align-items: center;
+    }
+
+    .gov-banner img {
+      width: 50px;
+      margin-right: 15px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      padding-left: 0;
+      margin-top: 1rem;
+    }
+
+    nav ul li {
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 2rem;
+      background-color: white;
+      max-width: 1000px;
+      margin: 20px auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      color: #0b3d91;
+      border-left: 6px solid #0b3d91;
+      padding-left: 10px;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background-color: #0b3d91;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    ul {
+      margin-left: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section id="about">
+      <h2>About the Scheme</h2>
+      <p>Pradhan Mantri Kisan Maandhan Yojana (PM-KMY) is a central sector scheme for Small and Marginal Farmers (SMFs), offering a fixed monthly pension of ₹3,000 after the age of 60. The scheme ensures old age security and social welfare.</p>
+    </section>
+
+    <section id="benefits">
+      <h2>Benefits</h2>
+      <ul>
+        <li>Monthly pension of ₹3,000 after age 60.</li>
+        <li>Family pension available to spouse in case of subscriber's death.</li>
+        <li>In case of subscriber’s death before vesting, spouse may continue or withdraw contributions.</li>
+      </ul>
+    </section>
+
+    <section id="eligibility">
+      <h2>Eligibility</h2>
+      <ul>
+        <li>Age: 18–40 years</li>
+        <li>Landholding: Up to 2 hectares of cultivable land</li>
+        <li>Not a member of EPFO, NPS, or ESIC</li>
+        <li>Not an income taxpayer</li>
+      </ul>
+    </section>
+
+    <section id="enrollment">
+      <h2>Enrollment Process</h2>
+      <p>Eligible farmers can visit their nearest Common Service Centre (CSC) to enroll. They need to make a monthly contribution (₹55–₹200 depending on age) till the age of 60. The government contributes an equal amount.</p>
+    </section>
+
+    <section id="documents">
+      <h2>Documents Required</h2>
+      <ul>
+        <li>Aadhaar Card</li>
+        <li>Landholding records</li>
+        <li>Savings bank account details</li>
+        <li>Mobile number</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
+{% endblock %}

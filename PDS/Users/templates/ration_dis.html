@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>India Ration Distribution</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container py-5">
+        <!-- Hero Section -->
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold text-primary">India Ration Distribution Portal</h1>
+            <p class="lead text-muted">Tracking ration card holders and distributors across all Indian states.</p>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="row g-4 text-center mb-5">
+            <div class="col-md-4">
+                <div class="card shadow border-0">
+                    <div class="card-body">
+                        <h5 class="text-muted">Total Ration Card Holders</h5>
+                        <h2 class="text-success">5.2 Cr+</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow border-0">
+                    <div class="card-body">
+                        <h5 class="text-muted">Registered Distributors</h5>
+                        <h2 class="text-info">1.1 Lakh+</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow border-0">
+                    <div class="card-body">
+                        <h5 class="text-muted">States Covered</h5>
+                        <h2 class="text-warning">28 + UTs</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- State-wise Distribution Table -->
+        <div class="mb-5">
+            <h3 class="mb-4">State-wise Distribution Summary</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>State</th>
+                            <th>Card Holders</th>
+                            <th>Distributors</th>
+                            <th>Last Distribution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Uttar Pradesh</td>
+                            <td>1.5 Cr</td>
+                            <td>32,000</td>
+                            <td>2025-04-15</td>
+                        </tr>
+                        <tr>
+                            <td>Bihar</td>
+                            <td>90 Lakh</td>
+                            <td>18,000</td>
+                            <td>2025-04-14</td>
+                        </tr>
+                        <tr>
+                            <td>Maharashtra</td>
+                            <td>85 Lakh</td>
+                            <td>17,000</td>
+                            <td>2025-04-13</td>
+                        </tr>
+                        <tr>
+                            <td>West Bengal</td>
+                            <td>70 Lakh</td>
+                            <td>15,500</td>
+                            <td>2025-04-12</td>
+                        </tr>
+                        <tr>
+                            <td>Tamil Nadu</td>
+                            <td>60 Lakh</td>
+                            <td>14,000</td>
+                            <td>2025-04-10</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center mt-5">
+            <p class="text-muted">© 2025 India Ration Portal | Designed with Django & Bootstrap</p>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Distribution System</title>
+
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+ <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <!-- Logo (unchanged) -->
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'logo.png' %}" alt="Logo" width="400" height="80" class="d-inline-block align-text-top">
+        </a>
+    </div>
+
+    <!-- Main Navbar Centered -->
+    <div class="container-fluid justify-content-center">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav d-flex flex-row justify-content-center gap-5">
+
+                <!-- FPS -->
+                <li class="nav-item text-center">
+                    <a class="nav-link active text-decoration-none" href="{% url 'Users:fps_shop' %}">
+                        <img src="{% static 'icons/fps.jpg' %}" alt="Fair Price Shop" width="60" height="60" class="mb-1">
+                        <p class="text-dark m-0">Price Shop</p>
+                    </a>
+                </li>
+
+                <!-- Ration Card -->
+                <li class="nav-item text-center">
+                    <a class="nav-link active text-decoration-none" href="{% url 'Users:ration_distribution' %}">
+                        <img src="{% static 'icons/ration_card.jpg' %}" alt="Ration Card" width="60" height="60" class="mb-1">
+                        <p class="text-dark m-0">Ration Card</p>
+                    </a>
+                </li>
+
+                <!-- Citizen Corner -->
+                <li class="nav-item text-center">
+                    <a class="nav-link active text-decoration-none" href="{% url 'Users:citizen' %}">
+                        <img src="{% static 'icons/citizen_corner.jpg' %}" alt="Citizen Corner" width="60" height="60" class="mb-1">
+                        <p class="text-dark m-0">Citizen Corner</p>
+                    </a>
+                </li>
+
+                <!-- D.B.T -->
+                <li class="nav-item text-center">
+                    <a class="nav-link active text-decoration-none" href="{% url 'Users:dbt' %} ">
+                        <img src="{% static 'icons/d.b.t.jpg' %}" alt="D.B.T" width="60" height="60" class="mb-1">
+                        <p class="text-dark m-0">D.B.T Dashboard</p>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <!-- Home -->
+              <li class="nav-item">
+                <a class="nav-link text-primary" href="{% url 'Users:home' %}">Home</a>
+              </li>
+      
+              <!-- Superuser actions -->
+              {% if request.user.is_superuser %}
+                <li class="nav-item">
+                  <a class="nav-link text-primary" href="{% url 'Users:add_ration_details' %}">Add Ration</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'Users:scan_rfid' %}" class="nav-link text-primary">Give Ration</a>
+                </li>
+              {% endif %}
+      
+              <!-- FPS actions -->
+              {% if request.user.fpsprofile %}
+                <li class="nav-item">
+                  <a class="nav-link text-primary" href="{% url 'Users:add_ration_details' %}">Add Ration</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'Users:scan_rfid' %}" class="nav-link text-primary">Give Ration</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'Users:fps_dashboard' %}" class="nav-link text-primary">FPS Dashboard</a>
+                </li>
+              {% endif %}
+      
+              <!-- Logged in users -->
+              {% if user.is_authenticated %}
+                <!-- Logout -->
+                <li class="nav-item">
+                  <a class="nav-link text-primary" href="{% url 'Users:logout' %}">Logout</a>
+                </li>
+      
+                <!-- Regular user only -->
+                {% if not request.user.is_superuser and not request.user.fpsprofile %}
+                  <li class="nav-item">
+                    <a class="nav-link text-primary" href="{% url 'Users:profile' %}">Profile</a>
+                  </li>
+                {% endif %}
+      
+              {% else %}
+                <!-- Not logged in -->
+                <li class="nav-item">
+                  <a class="nav-link text-primary" href="{% url 'Users:login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-primary" href="{% url 'Users:signup' %}">Signup</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-primary" href="{% url 'Users:register_fps' %}">FPS Signup</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-primary" href="{% url 'Users:fps_login' %}">FPS Login</a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+            
+    <!-- Page Content -->
+    {% block body %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light pt-4">
+        <div class="container">
+            <!-- Top Section -->
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>CENTRAL MINISTRY</h6>
+                    <ul class="list-unstyled">
+                        <li>Andaman and Nicobar Island</li>
+                        <li>Andhra Pradesh</li>
+                        <li>Arunachal Pradesh</li>
+                        <li>Assam</li>
+                        <li>Bihar</li>
+                        <!-- Add more states as needed -->
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-unstyled">
+                        <li>Madhya Pradesh</li>
+                        <li>Maharashtra</li>
+                        <li>Manipur</li>
+                        <li>Meghalaya</li>
+                        <li>Mizoram</li>
+                        <!-- Add more states as needed -->
+                    </ul>
+                </div>
+            </div>
+            <hr class="text-white">
+            <!-- Middle Section -->
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a href="#" class="text-white me-3">Terms of Use</a>
+                    <a href="#" class="text-white me-3">Privacy Policy</a>
+                    <a href="#" class="text-white me-3">Help</a>
+                    <a href="#" class="text-white">Contact Us</a>
+                </div>
+            </div>
+            <hr class="text-white">
+            <!-- Bottom Section -->
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <p class="mb-0">
+                        © Copyright NIC 2024. This site is designed, developed, and hosted by National Informatics Centre,
+                        Ministry of Electronics & Information Technology, Government of India.
+                    </p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <a href="#" class="btn btn-success btn-sm me-2">Need Help? Ask NICCI</a>
+                    <span class="badge bg-warning text-dark">044763414</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap and JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container d-flex justify-content-center align-items-center vh-50">
+    <div class="card shadow p-4" style="width: 100%; max-width: 500px;">
+        <h4 class="text-center mb-4">Enter Ration Details</h4>
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="beneficiary_card_no" class="form-label">Card Number</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="beneficiary_card_no" 
+                    name="beneficiary_card_no" 
+                    placeholder="Enter your card number" 
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="ration_card_beneficiary_name" class="form-label">Beneficiary Name</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="ration_card_beneficiary_name" 
+                    name="ration_card_beneficiary_name" 
+                    placeholder="Enter beneficiary name" 
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="b_ration_address" class="form-label">Address</label>
+                <textarea 
+                    class="form-control" 
+                    id="b_ration_address" 
+                    name="b_ration_address" 
+                    placeholder="Enter address" 
+                    rows="3" 
+                    required
+                ></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="b_ration_state" class="form-label">State</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="b_ration_state" 
+                    name="b_ration_state" 
+                    placeholder="Enter state" 
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="b_ration_pincode" class="form-label">Pincode</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="b_ration_pincode" 
+                    name="b_ration_pincode" 
+                    placeholder="Enter pincode" 
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="b_ration_family_size" class="form-label">Family Size</label>
+                <input 
+                    type="number" 
+                    class="form-control" 
+                    id="b_ration_family_size" 
+                    name="b_ration_family_size" 
+                    placeholder="Enter family size" 
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="b_ration_family" class="form-label">Family Details</label>
+                <textarea 
+                    class="form-control" 
+                    id="b_ration_family" 
+                    name="b_ration_family" 
+                    placeholder="Enter family details" 
+                    rows="3" 
+                    required
+                ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Add Ration</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

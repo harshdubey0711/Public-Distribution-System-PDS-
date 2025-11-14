@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PM-GKAY | Government of India</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #0b3d91;
+            color: white;
+            padding: 1rem 2rem;
+        }
+
+        .gov-banner {
+            display: flex;
+            align-items: center;
+        }
+
+        .gov-banner img {
+            width: 50px;
+            margin-right: 15px;
+        }
+
+        .gov-banner h1 {
+            font-size: 1.5rem;
+        }
+
+        nav {
+            margin-top: 1rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 2rem;
+            background-color: white;
+            max-width: 1000px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            border-left: 6px solid #0b3d91;
+            padding-left: 10px;
+            color: #0b3d91;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        p, ul, ol {
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: #0b3d91;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <section id="details">
+            <h2>Details</h2>
+            <p>Pradhan Mantri Garib Kalyan Anna Yojana (PM-GKAY) is a scheme under Atmanirbhar Bharat to supply free food grains to migrants and the poor.</p>
+            <ul>
+                <li><strong>Phase I & II:</strong> April–June 2020 and July–November 2020</li>
+                <li><strong>Phase III:</strong> May–June 2021</li>
+                <li><strong>Phase IV:</strong> July–November 2021</li>
+                <li><strong>Phase V:</strong> December 2021–March 2022</li>
+                <li><strong>Phase VI:</strong> April–September 2022 (Subsidy: ₹80,000 Crore)</li>
+            </ul>
+            <p>The scheme provides 5kg of free food grains monthly, in addition to subsidized ration under the NFSA.</p>
+            <p><strong>Note:</strong> Check the <em>One Nation One Ration Card</em> scheme for portability of benefits across India.</p>
+        </section>
+
+        <section id="benefits">
+            <h2>Benefits</h2>
+            <ul>
+                <li>5 kg of free food grain per person per month under PMGKAY</li>
+                <li>5 kg of subsidized food grain under PDS</li>
+            </ul>
+            <p><strong>State-wise Distribution:</strong></p>
+            <ul>
+                <li><strong>Wheat:</strong> Punjab, Haryana, Rajasthan, Chandigarh, Delhi, Gujarat</li>
+                <li><strong>Rice:</strong> All other States/UTs</li>
+            </ul>
+        </section>
+
+        <section id="eligibility">
+            <h2>Eligibility</h2>
+            <ul>
+                <li>Antyodaya Anna Yojana (AAY) families</li>
+                <li>Priority Households (PHH) identified by State/UT authorities</li>
+                <li>Households led by widows, disabled, terminally ill, or elderly persons without support</li>
+                <li>Single men/women with no family or support</li>
+                <li>Primitive tribal groups, daily wage earners, and informal workers</li>
+                <li>HIV-positive persons from BPL families</li>
+            </ul>
+        </section>
+
+        <section id="application">
+            <h2>Application Process (Offline)</h2>
+            <ol>
+                <li>Visit the nearest Fair Price Shop with your Ration Card</li>
+                <li>Quote either Ration Card number or Aadhaar number</li>
+                <li>Authenticate identity via fingerprint or iris scan</li>
+            </ol>
+        </section>
+
+        <section id="documents">
+            <h2>Documents Required</h2>
+            <ul>
+                <li>Ration Card</li>
+                <li>Aadhaar Card (if linked to Ration Card)</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card shadow-lg p-4" style="width: 100%; max-width: 400px; border-radius: 15px;">
+        <h4 class="text-center mb-4">OTP Verification</h4>
+
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="email" value="{{ email }}">
+
+            <div class="mb-3">
+                <label for="otp" class="form-label">Enter OTP</label>
+                <input type="text" name="otp" maxlength="6" class="form-control" placeholder="e.g. 1234" required>
+            </div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Verify OTP</button>
+            </div>
+
+            {% if error %}
+                <div class="alert alert-danger mt-3 text-center">
+                    {{ error }}
+                </div>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}

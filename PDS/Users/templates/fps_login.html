@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center mb-4">FPS Owner Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+        <p class="text-center mt-3">
+            <a href="{% url 'Users:register_fps' %}">Register as FPS Owner</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

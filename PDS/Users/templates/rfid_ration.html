@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<h1>RFID Ration Details</h1>
+    <button onclick="fetchRationDetails()">Scan RFID</button>
+    <div id="ration-details"></div>
+
+    <script>
+        function fetchRationDetails() {
+            fetch('/rfid-ration/')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const details = data.ration_details;
+                        let content = `
+                            <p>Name: ${details.name}</p>
+                            <p>Address: ${details.address}</p>
+                            <p>State: ${details.state}</p>
+                            <p>Pincode: ${details.pincode}</p>
+                            <p>Family Size: ${details.family_size}</p>`;
+
+                        // Display eligibility or quantity information
+                        if (details.eligibility) {
+                            content += `<p>Eligibility: ${details.eligibility}</p>`;
+                        } else {
+                            content += `
+                                <p>Wheat Quantity: ${details.wheat_quantity} kg</p>
+                                <p>Rice Quantity: ${details.rice_quantity} kg</p>`;
+                        }
+
+                        document.getElementById('ration-details').innerHTML = content;
+                    } else {
+                        alert(data.error);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+
+{% endblock %}

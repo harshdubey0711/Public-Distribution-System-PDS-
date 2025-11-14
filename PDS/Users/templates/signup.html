@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div class="container d-flex justify-content-center align-items-center vh-50">
+    <div class="card shadow p-4" style="width: 100%; max-width: 500px;">
+        <h4 class="text-center mb-4">Signup</h4>
+        <form method="POST" action="{% url 'Users:signup' %}">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="name" 
+                    name="beneficiary_name" 
+                    placeholder="Enter your name" 
+                    required
+                >
+            </div>
+            
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input 
+                    type="email" 
+                    class="form-control" 
+                    id="email" 
+                    name="beneficiary_email" 
+                    placeholder="Enter your email" 
+                    required
+                >
+            </div>
+            
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="phone" 
+                    name="beneficiary_phone" 
+                    placeholder="Enter your phone number" 
+                    required
+                >
+            </div>
+            
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input 
+                    type="password" 
+                    class="form-control" 
+                    id="password" 
+                    name="beneficiary_password" 
+                    placeholder="Enter your password" 
+                    required
+                >
+            </div>
+            
+            <div class="mb-3">
+                <label for="card_no" class="form-label">Card Number</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="card_no" 
+                    name="beneficiary_card_no" 
+                    placeholder="Enter your card number" 
+                    required
+                >
+            </div>
+            
+            <div class="mb-3">
+                <label for="aadhaar" class="form-label">Aadhaar</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="aadhaar" 
+                    name="beneficiary_aadhaar" 
+                    placeholder="Enter your Aadhaar number" 
+                    required
+                >
+            </div>
+            
+            {% if message %}
+            <div class="alert alert-{{ class }}" role="alert">
+                {{ message }}
+            </div>
+            {% endif %}
+            
+            <button type="submit" class="btn btn-primary w-100">Signup</button>
+        </form>
+        <p class="text-center mt-3">Already have an account? <a href="{% url 'Users:login' %}">Login</a></p>
+    </div>
+</div>
+{% endblock %}

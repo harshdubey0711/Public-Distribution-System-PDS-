@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container mt-4">
+    <h2 class="text-center">FPS Dashboard - {{ fps.name }} ({{ fps.fps_code }})</h2>
+    
+    <div class="row">
+        <!-- Stock Levels -->
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Current Stock Levels</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">Wheat: <strong>{{ inventory.wheat_current }} kg</strong></li>
+                        <li class="list-group-item">Rice: <strong>{{ inventory.rice_current }} kg</strong></li>
+                        <li class="list-group-item">Sugar: <strong>{{ inventory.sugar_current }} kg</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Transactions -->
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">Recent Transactions</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Ration Card No</th>
+                                <th>Beneficiary</th>
+                                <th>Wheat</th>
+                                <th>Rice</th>
+                                <th>Sugar</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for txn in transactions %}
+                            <tr>
+                                <td>{{ txn.user.ration_card.beneficiary_card_no }}</td>
+                                <td>{{ txn.user.username }}</td>
+                                <td>{{ txn.wheat_issued }} kg</td>
+                                <td>{{ txn.rice_issued }} kg</td>
+                                <td>{{ txn.sugar_issued }} kg</td>
+                                <td>{{ txn.timestamp|date:"d M Y, h:i A" }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr><td colspan="6" class="text-center">No transactions yet.</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="text-center mt-4">
+        <a href="{% url 'Users:home' %}" class="btn btn-secondary">Back to Home</a>
+        <a href="{% url 'Users:fps_logout' %}" class="btn btn-danger">Logout</a>
+    </div>
+</div>
+{% endblock %}

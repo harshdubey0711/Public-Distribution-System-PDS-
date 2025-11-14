@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<!-- Carousel Section -->
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'corousel1.png' %}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block"></div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'corousel2.png' %}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block"></div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'corousel3.png' %}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block"></div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<hr>
+<!-- Cards Section -->
+<!-- Cards Section -->
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img class="card-img-top" src="{% static 'pmgkay.jpg' %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Pradhan Mantri Garib Kalyan Anna Yojana</h5>
+          <p class="card-text">
+            Pradhan Mantri Garib Kalyan Anna Yojana (PM-GKAY) is a scheme as part of Atmanirbhar Bharat to supply free food grains to migrants and poor. The decision has been taken keeping in view welfare of the beneficiaries and in order to strengthen the provisions of NFSA.
+          </p>
+          <a href="{% url 'Users:yojana1' %}" class="btn btn-primary">Learn More</a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img class="card-img-top" src="{% static 'pmkmy.webp' %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Pradhan Mantri Kisan Maan Dhan Yojana</h5>
+          <p class="card-text">
+            This is a voluntary and contributory pension scheme for SMFs between the ages of 18 and 40. Subscribers make monthly contributions ranging from Rs 55 to Rs 200 per month until they reach the age of 60. After reaching the age of 60, subscribers receive a minimum assured monthly pension of Rs 3,000.
+            
+          </p>
+          <a href="{% url 'Users:yojana2' %}" class="btn btn-primary">Learn More</a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img class="card-img-top" src="{% static 'ayy.jpeg' %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Antyodaya Anna Yojana</h5>
+          <p class="card-text">
+            The Scheme has been implemented in Meghalaya with effect from November 2001 as per guideline of Government of India. It covers the poorest families in the State and 35 Kgs of rice are supplied per month at the price of Rs. 3.00 per Kg to each identified poorest family.
+          </p>
+          <a href="{% url 'Users:yojana3' %}" class="btn btn-primary">Learn More</a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
