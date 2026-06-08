@@ -1,6 +1,8 @@
 import time
-import serial
+
 import random
+
+import serial
 from .forms import FPSRegistrationForm
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
@@ -9,7 +11,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from Users.forms import BeneficiaryProfileForm, Ration_admin
 from django.contrib.auth.decorators import login_required
-from .forms import FPSLoginForm  # Create this form
+from .forms import FPSLoginForm 
 
 
 #  Create your views here.
