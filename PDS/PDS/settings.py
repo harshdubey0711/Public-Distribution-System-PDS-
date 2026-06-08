@@ -5,7 +5,10 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep secret in production
-SECRET_KEY = 'YOUR_SECRET_KEY_HERE'
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY",
+    "django-insecure-65566#v)0a5*7e$j6pv@e_st%$3i8q93cy3k7al6q_76t32+_6"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production
 DEBUG = False
